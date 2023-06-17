@@ -1,23 +1,36 @@
 import User from "../models/User.js";
+import Discount from "../models/Discount.js";
 import nodemailer from 'nodemailer';
 
-
+export const discount = async (req, res, next) => {
+  try {
+    const discount = await Discount.findOne({ code: req.body.code });
+    if (discount === null) {
+      res.status(400).send(`Invalid code!`)
+    }
+    else {
+      res.status(200).send(`Discount of Rs.${discount.value} applied. Pay Rs.${999 - discount.value} Only.`);
+    }
+  } catch (err) {
+    res.status(400).send(`Invalid code!`);
+  }
+};
 
 export const register = async (req, res, next) => {
   try {
     const newUser = new User(req.body);
     const user = await User.findOne({ email: req.body.email });
-    if(user === null){
+    if (user === null) {
       await newUser.save();
       res.status(200).send(`Hey ${req.body.name}!! . We are verifying your payment. We will get back to you within 24 hours. In case of any queries, raise your query in Contact Us Section or you can mail us on josaacounsellors@gmail.com .`);
     }
-    else{
+    else {
       res.status(400).send(`This email is already registered with name ${req.body.name}.`);
     }
-    
+
     // const user = await User.findOne({ email: req.body.email });
-    
-    
+
+
     // mailing
     // const transporter = nodemailer.createTransport({
     //   host: 'smtp.gmail.com',
