@@ -9,7 +9,7 @@ export const discount = async (req, res, next) => {
       res.status(400).send(`Invalid code!`)
     }
     else {
-      res.status(200).send(`Discount of Rs.${discount.value} applied. Pay Rs.${999 - discount.value} Only.`);
+      res.status(200).send(discount);
     }
   } catch (err) {
     res.status(400).send(`Invalid code!`);
