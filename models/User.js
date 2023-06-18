@@ -58,6 +58,11 @@ const UserSchema = new mongoose.Schema(
     code: {
       type: String,
     },
+    paymentID: {
+      type: String,
+      required: true,
+      unique: true,
+    }
   },
   { timestamps: true }
 );
