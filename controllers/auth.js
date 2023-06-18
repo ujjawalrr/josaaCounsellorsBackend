@@ -4,9 +4,9 @@ import nodemailer from 'nodemailer';
 
 export const discount = async (req, res, next) => {
   try {
-    var code = req.body.code;
-    var codeCapital = code.toUpperCase;
-    const discount = await Discount.findOne({ code: codeCapital });
+    let code = req.body.code;
+    code = code.toUpperCase();
+    const discount = await Discount.findOne({ code: code });
     if (discount === null) {
       res.status(400).send(`Invalid code!`)
     }
