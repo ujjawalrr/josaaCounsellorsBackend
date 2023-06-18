@@ -22,7 +22,7 @@ export const register = async (req, res, next) => {
     const user = await User.findOne({ email: req.body.email });
     if (user === null) {
       await newUser.save();
-      res.status(200).send(`Hey ${req.body.name}!! . We are verifying your payment. We will get back to you within 24 hours. In case of any queries, raise your query in Contact Us Section or you can mail us on josaacounsellors@gmail.com .`);
+      res.status(200).send(`Hey ${req.body.name}!! We are verifying your payment. We will get back to you within 24 hours. In case of any queries, raise your query in Contact Us Section or you can mail us on josaacounsellors@gmail.com .`);
     }
     else {
       res.status(400).send(`This email is already registered with name ${req.body.name}.`);
@@ -37,13 +37,13 @@ export const register = async (req, res, next) => {
     //   port: 465,
     //   secure: true,
     //   auth: {
-    //     user: 'ujjawalkgp@gmail.com',
+    //     user: 'josaacounsellors@gmail.com',
     //     pass: 'oyvziqntqpvlpdti'
     //   }
     // })
 
     // const mailOptions = {
-    //   from: 'ujjawalkgp@gmail.com',
+    //   from: 'josaacounsellors@gmail.com',
     //   to: req.body.email,
     //   subject: `Registration Successful`,
     //   html: `<h1> Hey ${req.body.name}!! Greetings from COMPOSIT, IIT KHARAGPUR. You have been successfully registered for COMPOSIT. Your registration id is ${req.body.regID} .<h1>`
