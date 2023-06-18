@@ -28,7 +28,7 @@ export const register = async (req, res, next) => {
         secure: true,
         auth: {
           user: 'josaacounsellors@gmail.com',
-          pass: ''
+          pass: process.env.MAIL
         }
       })
       const mailOptions = {
